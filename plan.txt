@@ -91,6 +91,7 @@
   	)
   
 )
+
 (define (problem car_parking)
   (:domain car_park)
   (:objects sq-0 sq-1 sq-2 sq-3 sq-4 sq-5
