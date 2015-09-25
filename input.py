@@ -105,9 +105,9 @@ if(car_pos[0][4] == 'H'):
 	(ga,gb) = goal
 	start = ga*cols + gb
 	end = start + car_pos[0][1] - 1
-	f.write('(loc_car car-1 '+str(start) + ' ' +str(end) +'))\n)')
+	f.write('(loc_car car-1 sq-'+str(start) + ' sq-' +str(end) +'))\n)')
 else:
 	(ga,gb) = goal
 	start = ga*cols + gb
 	end =  start + (car_pos[0][1] - 1)*cols
-	f.write('(loc_car car-1 '+str(start) + ' ' +str(end) +'))\n)')
+	f.write('(loc_car car-1 sq-'+str(start) + ' sq-' +str(end) +'))\n)')
