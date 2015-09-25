@@ -52,11 +52,17 @@ f = open('problem_2.pddl','w')
 f.write('(define (problem car_parking)\n(:domain car_park)\n(:objects ')
 for i in range(1,num_cars+1):
 	f.write('car-'+str(i)+' ')
-f.write(' - car\n\t')
+f.write('\n\t')
 for i in range(0,rows*cols):
 	f.write('sq-'+str(i)+' ')
-f.write(' - pos)\n')
+f.write(')\n')
 f.write('(:init ')
+for i in range(1,num_cars+1):
+	f.write('(is_car car-'+str(i)+') ')
+f.write('\n\t')
+for  i in range(0,rows*cols):
+	f.write('(is_board_pos sq-'+str(i)+') ')
+f.write('\n\t')
 for item in empty_cells:
 	f.write('(is_empty sq-'+str(item)+') ')
 f.write('\n\t')
