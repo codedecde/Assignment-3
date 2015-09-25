@@ -76,6 +76,12 @@ for row in range(0,rows):
 		prev_cell = (current_cell - 1)
 		f.write('(left_adj sq-'+str(prev_cell)+' sq-'+str(current_cell)+') ')
 f.write('\n\t')
+for element in car_pos:
+	if(element[4] == 'H'):
+		f.write('(is_H car-'+str(element[0])+') ')
+	else:
+		f.write('(is_V car-'+str(element[0])+') ')
+f.write('\n\t')
 for row in range(0,rows):
 	for col in range(0,cols-1):
 		current_cell = (row*cols) + col
