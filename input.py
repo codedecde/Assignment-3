@@ -101,13 +101,25 @@ for row in range(0,rows-1):
 		f.write('(bottom_adj sq-'+str(next_cell)+' sq-'+str(current_cell)+') ')
 f.write(')\n')
 f.write('(:goal ')
+
 if(car_pos[0][4] == 'H'):
 	(ga,gb) = goal
-	start = ga*cols + gb
-	end = start + car_pos[0][1] - 1
-	f.write('(loc_car car-1 sq-'+str(start) + ' sq-' +str(end) +'))\n)')
+	if(gb <= car_pos[0][3]):
+		start = ga*cols + gb
+		end = start + car_pos[0][1] - 1
+		f.write('(loc_car car-1 sq-'+str(start) + ' sq-' +str(end) +'))\n)')
+	else:
+		end = ga*cols + gb
+		start = end - car_pos[0][1] + 1
+		f.write('(loc_car car-1 sq-'+str(start) + ' sq-' +str(end) +'))\n)')		
 else:
 	(ga,gb) = goal
-	start = ga*cols + gb
-	end =  start + (car_pos[0][1] - 1)*cols
-	f.write('(loc_car car-1 sq-'+str(start) + ' sq-' +str(end) +'))\n)')
+	if(ga <= car_pos[0][2]):
+		start = ga*cols + gb
+		end =  start + (car_pos[0][1] - 1)*cols
+		f.write('(loc_car car-1 sq-'+str(start) + ' sq-' +str(end) +'))\n)')
+	else:
+		end = ga*cols + gb
+		start = end - (car_pos[0][1] - 1)*cols
+		f.write('(loc_car car-1 sq-'+str(start) + ' sq-' +str(end) +'))\n)')
+
