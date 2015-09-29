@@ -1,4 +1,13 @@
-f = open('input.txt')
+import sys
+filename = ''
+problem_file_name = ''
+if(len(sys.argv) > 1):
+	#print 'Printing in python: ',sys.argv[1]
+	filename = sys.argv[1] + '.txt'
+	problem_file_name = sys.argv[1] + '.pddl'
+else:
+	filename = ''
+f = open(filename)
 counter = 0
 rows=-1
 cols=-1
@@ -48,7 +57,7 @@ for i in range(0,len(board)):
 			empty_cells.append(i*cols + j)
 	#print ''
 
-f = open('problem_2.pddl','w')
+f = open(problem_file_name,'w')
 f.write('(define (problem car_parking)\n(:domain car_park)\n(:objects ')
 for i in range(1,num_cars+1):
 	f.write('car-'+str(i)+' ')
