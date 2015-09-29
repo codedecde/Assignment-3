@@ -130,9 +130,32 @@ else:
 	fout.write(str(len(all_moves)) + '\n')
 
 	for lines in all_moves:
-		line = lines[0]
-		line = line.split('-')
-		fout.write(line[1][0] + ' ')
-		line = line[0].split('_')	
-		fout.write(str(line[1][0]).upper() + ' ' + str(len(lines)) + '\n')
+		if(len(lines)==1):
+			line = lines[0]
+			line = line.split('-')
+			fout.write(line[1][0] + ' ')
+			line = line[0].split('_')	
+			fout.write(str(line[1][0]).upper() + ' ' + str(len(lines)) + '\n')
+		else:
+			first_line = lines[0]
+			last_line = lines[len(lines) -1]
+			list1 = first_line.split()
+			car = list1[1]
+
+			if(car_data[car][2] == 'H'):
+				list2 = last_line.split()
+				initial_pos = eval(list1[2].lstrip('sq-'))
+				final_pos = eval(list2[4].lstrip('sq-'))
+				number_of_steps = abs(final_pos - initial_pos)
+				fout.write(list1[1].lstrip('car-') + ' ')
+				word = list1[0].split('-')
+				fout.write(str(word[1][0]).upper() + ' ' + str(number_of_steps) + '\n')
+			else:
+				list2 = last_line.split()
+				initial_pos = eval(list1[2].lstrip('sq-'))
+				final_pos = eval(list2[4].lstrip('sq-'))
+				number_of_steps = abs(final_pos - initial_pos) / col
+				fout.write(list1[1].lstrip('car-') + ' ')
+				word = list1[0].split('-')
+				fout.write(str(word[1][0]).upper() + ' ' + str(number_of_steps) + '\n')
 			
